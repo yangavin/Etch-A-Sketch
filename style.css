@@ -10,3 +10,20 @@ h1, h2{
 h1{
     font-size: 2.5rem;
 }
+
+main{
+    display: flex;
+}
+#draw-container{
+    display: flex;
+    flex-direction: column;
+}
+#dimension-container{
+    display: flex;
+    justify-content: space-between;
+}
+#board{
+    background-color: white;
+    width: 30rem;
+    height: 30rem;
+}
