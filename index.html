@@ -19,7 +19,7 @@
     <main>
         <div id="draw-container">
             <div id="dimension-container">
-                <input type="range" name="dimension" id="dimension">
+                <input type="range" name="dimension" id="dimension" min="10" max="100">
                 <h2 id='dimension-label'>64x64</h2>
             </div>
             <div id="board"></div>
@@ -28,14 +28,10 @@
         <div id="tools-container">
             <h2>Color</h2>
             <input type="color" name="color" id="color">
-            <div class="select">
                 <input type="radio" name="mode" id="pen">
                 <label for="pen">Pen</label>
-            </div>
-            <div class="select">
                 <input type="radio" name="mode" id="eraser">
                 <label for="eraser">Eraser</label>
-            </div>
             <div id="clear-button-container">
                 <button id="clear">Clear</button>
             </div>

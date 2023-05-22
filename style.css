@@ -60,10 +60,6 @@ main {
     height: 7rem;
 }
 
-.select{
-    font-size: 2rem;
-}
-
 #clear-button-container{
     margin-top: auto;
     margin-bottom: 1rem;
@@ -72,7 +68,8 @@ main {
 input[type='radio']{
     display: none;
 }
-.select{
+label{
+    font-size: 1.5rem;
     transition: .2s;
     color: black;
     background-color: #E7E7E7;
@@ -82,7 +79,7 @@ input[type='radio']{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .2rem;
+    padding: 0;
 }
 
 #clear{
@@ -94,8 +91,10 @@ input[type='radio']{
     border: none;
     border-radius: .5rem;
     transition: .2s;
+    padding: 0;
 }
 
-#clear:hover, .select:hover{
+#clear:hover, label:hover{
     transform: translate(0, -.1rem);
+    cursor: pointer;
 }
