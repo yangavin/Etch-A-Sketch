@@ -17,12 +17,13 @@ h1 {
 main {
     display: flex;
     margin: 0rem 10rem;
+    gap: 8rem;
 }
 
 #draw-container {
     display: flex;
     flex-direction: column;
-    padding-right: 8rem;
+    /* padding-right: 8rem; */
 }
 
 #dimension-container {
@@ -38,6 +39,8 @@ input[type="range"]{
     background-color: white;
     width: 30rem;
     height: 30rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #border {
@@ -51,7 +54,6 @@ input[type="range"]{
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
     gap: 2rem;
 }
 
