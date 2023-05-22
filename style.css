@@ -30,6 +30,10 @@ main {
     justify-content: space-between;
 }
 
+input[type="range"]{
+    width: 65%;
+}
+
 #board {
     background-color: white;
     width: 30rem;
