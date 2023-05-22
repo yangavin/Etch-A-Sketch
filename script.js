@@ -1,6 +1,7 @@
 const dimensionSlider = document.querySelector('#dimension');
 const dimensionLabel = document.querySelector('#dimension-label');
 const board = document.querySelector('#board');
+const clearButton = document.querySelector('#clear');
 
 dimensionSlider.addEventListener('input', ()=>{
     let dimension = dimensionSlider.value;
@@ -17,3 +18,10 @@ dimensionSlider.addEventListener('mouseup', ()=>{
         board.append(pixel);
     }
 });
+
+clearButton.addEventListener('click', ()=>{
+    const pixels = document.querySelectorAll('.pixel');
+    for (let pixel of pixels){
+        pixel.style.backgroundColor = 'white';
+    }
+})
