@@ -3,8 +3,10 @@ const dimensionLabel = document.querySelector('#dimension-label');
 const board = document.querySelector('#board');
 const clearButton = document.querySelector('#clear');
 const colorInput = document.querySelector('#color');
-const penButton = document.querySelector('#pen-label');
-const eraserButton = document.querySelector('#eraser-label');
+const penButton = document.querySelector('#pen');
+const eraserButton = document.querySelector('#eraser');
+const penButtonLabel = document.querySelector('#pen-label');
+const eraserButtonLabel = document.querySelector('#eraser-label');
 
 function resetBoard(dimension, color) {
     board.innerHTML = '';
@@ -12,9 +14,9 @@ function resetBoard(dimension, color) {
     for (let i = 1; i <= dimension ** 2; i++) {
         let pixel = document.createElement('div');
         pixel.classList.add('pixel');
-        pixel.addEventListener("dragstart", (event)=> {
+        pixel.addEventListener("dragstart", (event) => {
             event.preventDefault();
-          });
+        });
         pixel.style.width = pixel.style.height = `${pixelDimension}%`;
         board.append(pixel);
     }
@@ -24,16 +26,16 @@ function resetBoard(dimension, color) {
 let mouseDown = false;
 
 board.addEventListener('mousedown', () => mouseDown = true);
-board.addEventListener('mouseup', () =>mouseDown = false);
+board.addEventListener('mouseup', () => mouseDown = false);
 
-function setColor(color){
+function setColor(color) {
     const pixels = document.querySelectorAll('.pixel');
     for (let pixel of pixels) {
-        pixel.addEventListener('click', ()=>{
+        pixel.addEventListener('click', () => {
             pixel.style.backgroundColor = color;
         })
         pixel.addEventListener('mouseover', () => {
-            if (mouseDown){
+            if (mouseDown) {
                 pixel.style.backgroundColor = color;
             }
         })
@@ -53,8 +55,10 @@ dimensionSlider.addEventListener('mouseup', () => {
     resetBoard(dimensionSlider.value, colorInput.value);
 });
 
-colorInput.addEventListener('change', ()=>{
-    setColor(colorInput.value);
+colorInput.addEventListener('change', () => {
+    if(!eraserButton.checked){
+        setColor(colorInput.value);
+    }
 })
 
 clearButton.addEventListener('click', () => {
@@ -64,12 +68,17 @@ clearButton.addEventListener('click', () => {
     }
 })
 
-//Need a way to track the on-off status of radio buttons
-penButton.addEventListener('click', ()=>{
-    console.log("PEN CLICKED");
-    setColor(colorInput.value);
-})
-eraserButton.addEventListener('click', ()=>{
-    console.log("ERASER CLICKED");
-    setColor('white');
+penButton.addEventListener('change', () => {
+    if (penButton.checked) {
+        setColor(colorInput.value);
+        penButtonLabel.classList.toggle('on-select');
+        eraserButtonLabel.classList.toggle('on-select');
+    }
+});
+eraserButton.addEventListener('change', () => {
+    if (eraserButton.checked) {
+        setColor('white');
+        penButtonLabel.classList.toggle('on-select');
+        eraserButtonLabel.classList.toggle('on-select');
+    }
 })
