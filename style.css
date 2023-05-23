@@ -17,7 +17,7 @@ h1 {
 main {
     display: flex;
     margin: 0rem 10rem;
-    gap: 8rem;
+    justify-content: space-between;
 }
 
 #draw-container {
@@ -106,4 +106,15 @@ label{
 #clear:hover, label:hover{
     transform: translate(0, -.1rem);
     cursor: pointer;
+}
+
+@media (max-width: 1000px){
+    main{
+        margin: 2rem;
+    }
+}
+@media (max-width: 760px){
+    main{
+        margin: 0;
+    }
 }
