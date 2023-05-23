@@ -52,7 +52,12 @@ dimensionSlider.addEventListener('input', () => {
 });
 
 dimensionSlider.addEventListener('mouseup', () => {
-    resetBoard(dimensionSlider.value, colorInput.value);
+    if (!eraserButton.checked){
+        resetBoard(dimensionSlider.value, colorInput.value);
+    }
+    else{
+        resetBoard(dimensionSlider.value, 'white');
+    }
 });
 
 colorInput.addEventListener('change', () => {
