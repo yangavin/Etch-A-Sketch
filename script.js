@@ -12,19 +12,30 @@ function resetBoard(dimension, color) {
     for (let i = 1; i <= dimension ** 2; i++) {
         let pixel = document.createElement('div');
         pixel.classList.add('pixel');
+        pixel.addEventListener("dragstart", (event)=> {
+            event.preventDefault();
+          });
         pixel.style.width = pixel.style.height = `${pixelDimension}%`;
         board.append(pixel);
     }
     setColor(color);
 }
 
-//Need a way to change color on click-hover, instead of just hovering
-//Maybe chaining mousedown and mouseover?
+let mouseDown = false;
+
+board.addEventListener('mousedown', () => mouseDown = true);
+board.addEventListener('mouseup', () =>mouseDown = false);
+
 function setColor(color){
     const pixels = document.querySelectorAll('.pixel');
     for (let pixel of pixels) {
-        pixel.addEventListener('mouseover', () => {
+        pixel.addEventListener('click', ()=>{
             pixel.style.backgroundColor = color;
+        })
+        pixel.addEventListener('mouseover', () => {
+            if (mouseDown){
+                pixel.style.backgroundColor = color;
+            }
         })
     }
 }
